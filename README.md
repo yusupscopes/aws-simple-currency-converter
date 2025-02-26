@@ -40,3 +40,15 @@ Example:
 curl -X GET 'your-api-endpoint/convert?from_currency=USD&to_currency=IDR&amount=1'
 
 ```
+Response:
+```
+{
+    "from_currency":"USD",
+    "to_currency":"IDR",
+    "amount":1.0,
+    "exchange_rate":16345.0,
+    "converted_amount":16345.0,
+    "datetime":"2025-02-26T00:21:00.262788",
+    "countries":["Indonesia"]
+}
+```
