@@ -3,6 +3,7 @@
 A simple currency converter using AWS services.
 
 ## Architecture
+![Image](https://github.com/user-attachments/assets/69fba862-458d-47f8-8f29-1367c1ae6a26)
 - Lambda functions for processing currency conversion requests
 - External API for getting exchange rates from a third party service and getting the list of supported currencies
 - External API for getting the list of countries name
