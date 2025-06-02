@@ -2,6 +2,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from app.core.settings import settings
+# Add this import at the top
+from app.api.v1.endpoints import currency
 
 app = FastAPI(
     title=settings.APP_NAME,
@@ -34,6 +36,13 @@ async def health_check():
 # This will be populated in Phase 2
 # from app.api.v1.api import api_router
 # app.include_router(api_router, prefix=settings.API_V1_STR)
+
+# Add this before the if __name__ == "__main__" block
+app.include_router(
+    currency.router,
+    prefix=f"{settings.API_V1_STR}/currency",
+    tags=["currency"]
+)
 
 if __name__ == "__main__":
     import uvicorn
