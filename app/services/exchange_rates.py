@@ -26,7 +26,7 @@ class ExchangeRateService:
             try:
                 response = await client.get(f"{self.base_url}/{base_currency}")
                 response.raise_for_status()
-                data = response.json()
+                data = await response.json()
                 
                 self._rates_cache[base_currency] = data["rates"]
                 self._last_update = current_time
