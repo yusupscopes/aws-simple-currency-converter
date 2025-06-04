@@ -1,3 +1,4 @@
+# pytest --cov=app tests/ --cov-report=term-missing
 import pytest
 from fastapi.testclient import TestClient
 from app.main import app

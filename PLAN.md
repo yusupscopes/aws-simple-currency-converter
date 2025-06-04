@@ -50,9 +50,7 @@
 
 ## Phase 4: AWS Infrastructure
 - Create CloudFormation template for:
-  - Lambda function
-  - API Gateway
-  - SSM Parameter Store
+  - Lambda function URL
   - IAM roles and policies
 - Set up monitoring:
   - CloudWatch Logs
