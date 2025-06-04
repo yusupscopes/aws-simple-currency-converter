@@ -34,3 +34,6 @@ var/
 dependencies
 aws_lambda_artifact.zip
 .coverage
+currency-converter.zip
+function.zip
+package/
