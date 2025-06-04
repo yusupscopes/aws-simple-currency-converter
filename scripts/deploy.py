@@ -1,3 +1,5 @@
+# python scripts/deploy.py --environment dev
+
 import boto3
 import click
 import os

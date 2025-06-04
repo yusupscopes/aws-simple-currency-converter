@@ -34,6 +34,12 @@ Resources:
         Variables:
           ENVIRONMENT: !Ref Environment
       Role: !GetAtt LambdaExecutionRole.Arn
+  
+  CurrencyConverterLogGroup:
+    Type: AWS::Logs::LogGroup
+    Properties:
+      LogGroupName: !Sub "/aws/lambda/currency-converter-${Environment}"
+      RetentionInDays: 7
 
   # Lambda Function URL
   CurrencyConverterFunctionUrl:
@@ -41,6 +47,15 @@ Resources:
     Properties:
       AuthType: NONE
       TargetFunctionArn: !GetAtt CurrencyConverterFunction.Arn
+  
+  # Permission to allow the function URL to invoke the Lambda function
+  CurrencyConverterFunctionPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunctionUrl
+      FunctionName: !Ref CurrencyConverterFunction
+      Principal: '*'
+      FunctionUrlAuthType: NONE
 
   # IAM Role for Lambda
   LambdaExecutionRole:
