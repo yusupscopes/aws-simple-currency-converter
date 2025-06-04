@@ -2,7 +2,7 @@ import pytest
 from app.services.exchange_rates import ExchangeRateService
 from fastapi import HTTPException
 import httpx
-from unittest.mock import AsyncMock, patch, MagicMock
+from unittest.mock import AsyncMock, patch, MagicMock, Mock
 from datetime import datetime, timedelta
 
 @pytest.fixture
@@ -24,7 +24,7 @@ async def test_get_rates_success(exchange_service):
         mock_get.return_value = AsyncMock(
             status_code=200,
             raise_for_status=AsyncMock(),
-            json=AsyncMock(return_value=mock_response)
+            json=Mock(return_value=mock_response)
         )
         
         rates = await service.get_rates("USD")
@@ -45,7 +45,7 @@ async def test_get_rates_cache_expiration(exchange_service):
         mock_get.return_value = AsyncMock(
             status_code=200,
             raise_for_status=AsyncMock(),
-            json=AsyncMock(return_value=mock_response)
+            json=Mock(return_value=mock_response)
         )
         
         # First call
